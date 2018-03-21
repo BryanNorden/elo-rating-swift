@@ -18,7 +18,7 @@ public struct EloRating {
      - seealso:
      [Elo Rating System](https://en.wikipedia.org/wiki/Elo_rating_system#Mathematical_details)
      */
-    func chanceOfWinning(forPlayer ratingA: Float, vs ratingB: Float) -> Float {
+    public func chanceOfWinning(forPlayer ratingA: Float, vs ratingB: Float) -> Float {
         return 1 / (1 + pow(10,((ratingB - ratingA) / 400.0)))
     }
 
