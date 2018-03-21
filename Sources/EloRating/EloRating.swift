@@ -1,6 +1,6 @@
 import Foundation
 
-public class EloRating {
+public struct EloRating {
   
     /**
      Chance of Winning for a player vs another player
@@ -21,5 +21,6 @@ public class EloRating {
     public func chanceOfWinning(forPlayer ratingA: Float, vs ratingB: Float) -> Float {
         return 1 / (1 + pow(10,((ratingB - ratingA) / 400.0)))
     }
-
+    
+    public init() {}
 }
