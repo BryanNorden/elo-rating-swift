@@ -1,6 +1,6 @@
 import Foundation
 
-public struct EloRating {
+public class EloRating {
   
     /**
      Chance of Winning for a player vs another player
