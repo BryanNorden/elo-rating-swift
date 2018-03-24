@@ -15,7 +15,7 @@ public class EloPlayer: CustomStringConvertible {
     var uuid: UUID?
     var id: Int?
     
-    init(gameResult: GameResult, ratingBefore: Double, ratingAfter: Double, ratingChange: Double, uuid: UUID? = nil, id: Int? = 0) {
+    public init(gameResult: GameResult, ratingBefore: Double, ratingAfter: Double, ratingChange: Double, uuid: UUID? = nil, id: Int? = 0) {
         self.gameResult = gameResult
         self.ratingBefore = ratingBefore
         self.ratingAfter = ratingAfter
