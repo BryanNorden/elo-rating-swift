@@ -8,12 +8,12 @@ public enum GameResult {
 // To identify a player later use uuid or id depending on your user model
 
 public class EloPlayer: CustomStringConvertible {
-    var gameResult: GameResult
-    var ratingBefore: Double
-    var ratingAfter: Double
-    var ratingChange: Double
-    var uuid: UUID?
-    var id: Int?
+    public var gameResult: GameResult
+    public var ratingBefore: Double
+    public var ratingAfter: Double
+    public var ratingChange: Double
+    public var uuid: UUID?
+    public var id: Int?
     
     public init(gameResult: GameResult, ratingBefore: Double, ratingAfter: Double, ratingChange: Double, uuid: UUID? = nil, id: Int? = 0) {
         self.gameResult = gameResult
