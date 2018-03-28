@@ -1,8 +1,8 @@
 import XCTest
 import Foundation
-@testable import EloRating
+@testable import EloRatingSystem
 
-class EloRatingTests: XCTestCase {
+class EloRatingSystemTests: XCTestCase {
     
     // MARK: - Chance of Winning Tests
     

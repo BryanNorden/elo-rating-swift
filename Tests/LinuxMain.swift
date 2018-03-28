@@ -1,6 +1,6 @@
 import XCTest
-@testable import EloRatingTests
+@testable import EloRatingSystemTests
 
 XCTMain([
-    testCase(EloRatingTests.allTests),
+    testCase(EloRatingSystemTests.allTests),
 ])
