@@ -2,14 +2,14 @@ import Foundation
 
 // Note: Used fromulas from https://en.wikipedia.org/wiki/Elo_rating_system#Mathematical_details and other online resources
 
-class EloRating {
-  
+public final class EloRating {
+    
     /**
      Chance of Winning for a player vs another player
      
      - parameters:
-        - forPlayer: Player rating (Float)
-        - vs: Rating (Float) of player you want to beat
+     - forPlayer: Player rating (Float)
+     - vs: Rating (Float) of player you want to beat
      
      - returns:
      Decimal percentage change of player A beating player B
@@ -28,7 +28,7 @@ class EloRating {
      Array of EloPlayers with an updated ratingAfter
      */
     public func calculateWinLossRatings(_ players: [EloPlayer]) -> [EloPlayer] {
-
+        
         // Filter games by won or lost
         let playersWhoWon = players.filter { $0.gameResult == .won}
         let playersWhoLost = players.filter { $0.gameResult == .lost}
@@ -62,7 +62,7 @@ class EloRating {
                 // Calculate ELO change vs this one opponent and add it to our rating change
                 winner.ratingChange += K * (S - EA)
             }
-
+            
             // Add accumulated change to initial ELO for final ELO
             winner.ratingAfter = winner.ratingBefore + winner.ratingChange
         }
@@ -76,7 +76,7 @@ class EloRating {
                 let winnerELO = playersWhoWonOriginal[playersWonIndex].ratingBefore
                 
                 var S : Double
-
+                
                 if loserELO < winnerELO {
                     S = 0;
                 } else if loserELO == winnerELO {
@@ -90,7 +90,7 @@ class EloRating {
                 // Calculate ELO change vs this one opponent and add it to our rating change
                 loser.ratingChange += K * (S - EA)
             }
-
+            
             // Add accumulated change to initial ELO for final ELO
             loser.ratingAfter = loser.ratingBefore + loser.ratingChange
         }
@@ -100,3 +100,4 @@ class EloRating {
     
     public init() {}
 }
+
