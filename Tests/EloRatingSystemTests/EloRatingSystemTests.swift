@@ -35,27 +35,35 @@ class EloRatingSystemTests: XCTestCase {
     
     func testCalculateWinLossRatings() {
         let players: [EloPlayer] = [
-            EloPlayer(gameResult: .won, ratingBefore: 900, ratingAfter: 0, ratingChange: 0),
-            EloPlayer(gameResult: .won, ratingBefore: 600, ratingAfter: 0, ratingChange: 0),
-            EloPlayer(gameResult: .lost, ratingBefore: 1500, ratingAfter: 0, ratingChange: 0),
-            EloPlayer(gameResult: .lost, ratingBefore: 1100, ratingAfter: 0, ratingChange: 0),
-            EloPlayer(gameResult: .lost, ratingBefore: 1100, ratingAfter: 0, ratingChange: 0)
+            EloPlayer(gameResult: .won, ratingBefore: 900, ratingAfter: 0, ratingChange: 0, id: 112),
+            EloPlayer(gameResult: .won, ratingBefore: 600, ratingAfter: 0, ratingChange: 0, id: 200),
+            EloPlayer(gameResult: .lost, ratingBefore: 1500, ratingAfter: 0, ratingChange: 0, id: 6),
+            EloPlayer(gameResult: .lost, ratingBefore: 1100, ratingAfter: 0, ratingChange: 0, id: 22),
+            EloPlayer(gameResult: .lost, ratingBefore: 1100, ratingAfter: 0, ratingChange: 0, id: 56)
             ]
         
         let playersAfterCaluclation = EloRating().calculateWinLossRatings(players)
         
         let expectedPlayers: [EloPlayer] = [
-            EloPlayer(gameResult: .won, ratingBefore: 900, ratingAfter: 943.9107, ratingChange: 0),
-            EloPlayer(gameResult: .won, ratingBefore: 600, ratingAfter: 647.1034, ratingChange: 0),
-            EloPlayer(gameResult: .lost, ratingBefore: 1500, ratingAfter: 1468.2899, ratingChange: 0),
-            EloPlayer(gameResult: .lost, ratingBefore: 1100, ratingAfter: 1070.3479, ratingChange: 0),
-            EloPlayer(gameResult: .lost, ratingBefore: 1100, ratingAfter: 1070.3479, ratingChange: 0)
+            EloPlayer(gameResult: .won, ratingBefore: 900, ratingAfter: 943.9107, ratingChange: 43.9107, id: 112),
+            EloPlayer(gameResult: .won, ratingBefore: 600, ratingAfter: 647.1034, ratingChange: 47.1034, id: 200),
+            EloPlayer(gameResult: .lost, ratingBefore: 1500, ratingAfter: 1468.2899, ratingChange: -31.7100, id: 6),
+            EloPlayer(gameResult: .lost, ratingBefore: 1100, ratingAfter: 1070.3479, ratingChange: -29.6520, id: 22),
+            EloPlayer(gameResult: .lost, ratingBefore: 1100, ratingAfter: 1070.3479, ratingChange: -29.6520, id: 56)
             ]
 
         for (index, _) in players.enumerated() {
             let expectedRating = expectedPlayers[index].ratingAfter
             let ratingAfter = playersAfterCaluclation[index].ratingAfter
             XCTAssertEqual(ratingAfter, expectedRating, accuracy: 0.0001)
+            
+            let expectedRatingChange = expectedPlayers[index].ratingChange
+            let ratingChange = playersAfterCaluclation[index].ratingChange
+            XCTAssertEqual(ratingChange, expectedRatingChange, accuracy: 0.0001)
+            
+            let expectedID = expectedPlayers[index].id
+            let id = playersAfterCaluclation[index].id
+            XCTAssertEqual(id, expectedID)
         }
     }
     
